@@ -2,6 +2,7 @@
 use app\assets\WebAsset;
 WebAsset::register($this);
 use  app\common\services\UrlService;
+use app\modules\web\controllers\common\BaseController;
 ?>
 <?php $this->beginPage();?>
 <!DOCTYPE html>
@@ -29,22 +30,19 @@ use  app\common\services\UrlService;
                         <img alt="image" class="img-circle" src="/images/web/logo.png" />
                     </div>
                 </li>
-                <li class="dashboard">
-                    <a href="/web/dashboard/index"><i class="fa fa-dashboard fa-lg"></i>
-                        <span class="nav-label">仪表盘</span></a>
-                </li>
                 <li class="account">
-                    <a href="/web/account/index"><i class="fa fa-user fa-lg"></i> <span class="nav-label">账号管理</span></a>
+                    <a href="<?=UrlService::bulidWebUrl("/account/index");?>"><i class="fa fa-user fa-lg"></i> <span class="nav-label">账号管理</span></a>
                 </li>
+                 <li class="member">
+                    <a href="<?=UrlService::bulidWebUrl("/customer/index");?>"><i class="fa fa-group fa-lg"></i> <span class="nav-label">客户列表</span></a>
+                </li>       
                 <li class="brand">
                     <a href="/web/brand/info"><i class="fa fa-cog fa-lg"></i> <span class="nav-label">品牌设置</span></a>
                 </li>
                 <li class="book">
                     <a href="/web/book/index"><i class="fa fa-book fa-lg"></i> <span class="nav-label">图书管理</span></a>
                 </li>
-                <li class="member">
-                    <a href="/web/member/index"><i class="fa fa-group fa-lg"></i> <span class="nav-label">会员列表</span></a>
-                </li>
+               
                 <li class="finance">
                     <a href="/web/finance/index"><i class="fa fa-rmb fa-lg"></i> <span class="nav-label">财务管理</span></a>
                 </li>
@@ -86,13 +84,13 @@ use  app\common\services\UrlService;
                         <ul class="dropdown-menu dropdown-messages">
                             <li>
                                 <div class="dropdown-messages-box">
-                                   用户                                   
+                                   用户 :<?=BaseController::roel_name();?>                                  
                                 </div>
                             </li>
                             <li class="divider"></li>
                             <li>
                                 <div class="dropdown-messages-box">
-                                   手机号码：11012345679                                </div>
+                                   手机号码：<?=BaseController::roel_mobile();?>                               </div>
                             </li>
                             <li class="divider"></li>
                             <li>

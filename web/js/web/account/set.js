@@ -22,6 +22,7 @@ var account_set_ops = {
 				mobile:mobile,
 				user_type:user_type,
 				login_pwd:login_pwd,
+				id:$(".wrap_account_set input[name=id]").val()
 			};
 			$.ajax({
 				url:common_ops.buildWebUrl("/account/set"),
