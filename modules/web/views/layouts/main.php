@@ -35,14 +35,19 @@ use app\modules\web\controllers\common\BaseController;
                 </li>
                  <li class="member">
                     <a href="<?=UrlService::bulidWebUrl("/customer/index");?>"><i class="fa fa-group fa-lg"></i> <span class="nav-label">客户列表</span></a>
-                </li>       
+                </li>  
+                <li class="member">
+                    <a href="<?=UrlService::bulidWebUrl("/product/index");?>"><i class="fa fa-group fa-lg"></i> <span class="nav-label">产品列表</span></a>
+                </li>
+                <li class="book">
+                    <a href="<?=UrlService::bulidWebUrl("/purchase/index");?>"><i class="fa fa-book fa-lg"></i> <span class="nav-label">采购单列表</span></a>
+                </li>
+                <li class="book">
+                    <a href="<?=UrlService::bulidWebUrl("/purchase/index");?>"><i class="fa fa-book fa-lg"></i> <span class="nav-label">销售单列表</span></a>
+                </li>         
                 <li class="brand">
                     <a href="/web/brand/info"><i class="fa fa-cog fa-lg"></i> <span class="nav-label">品牌设置</span></a>
                 </li>
-                <li class="book">
-                    <a href="/web/book/index"><i class="fa fa-book fa-lg"></i> <span class="nav-label">图书管理</span></a>
-                </li>
-               
                 <li class="finance">
                     <a href="/web/finance/index"><i class="fa fa-rmb fa-lg"></i> <span class="nav-label">财务管理</span></a>
                 </li>

@@ -1,14 +1,14 @@
 <?php
 use app\common\services\UrlService;
 use \app\common\services\StaticService;
-StaticService::includeAppJsStatic("/js/web/customer/index.js",app\assets\WebAsset::className());
+StaticService::includeAppJsStatic("/js/web/product/index.js",app\assets\WebAsset::className());
 ?>
 <div class="row  border-bottom">
 	<div class="col-lg-12">
 		<div class="tab_title">
 			<ul class="nav nav-pills">
 				<li  class="current"  >
-					<a href="<?=UrlService::bulidWebUrl("/customer/index")?>">客户列表</a>
+					<a href="<?=UrlService::bulidWebUrl("/product/index")?>">产品列表</a>
 				</li>
 			</ul>
 		</div>
@@ -31,7 +31,7 @@ StaticService::includeAppJsStatic("/js/web/customer/index.js",app\assets\WebAsse
         </form>
         <div class="row m-t">
             <div class="col-lg-12">
-                <a class="btn btn-w-m btn-outline btn-primary pull-right" href="<?=UrlService::bulidWebUrl("/customer/set")?>">
+                <a class="btn btn-w-m btn-outline btn-primary pull-right" href="<?=UrlService::bulidWebUrl("/product/set")?>">
                     <i class="fa fa-plus"></i>添加客户
                 </a>
             </div>
@@ -39,8 +39,8 @@ StaticService::includeAppJsStatic("/js/web/customer/index.js",app\assets\WebAsse
         <table class="table table-bordered m-t">
             <thead>
             <tr>
-                <th>客户ID</th>
-                <th>客户名称</th>
+                <th>产品ID</th>
+                <th>产品名称</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
@@ -48,14 +48,14 @@ StaticService::includeAppJsStatic("/js/web/customer/index.js",app\assets\WebAsse
             <tbody>
             	<?php foreach($list as $_item):?>
                 <tr>
-                    <td><?=$_item['cid'];?></td>
-                    <td><?=$_item['cust_name'];?></td>
+                    <td><?=$_item['pid'];?></td>
+                    <td><?=$_item['product'];?></td>
                     <td><?=$_item['created_time'];?></td>
                     <td>
-                        <a class="m-l" href="<?=UrlService::bulidWebUrl("/customer/set",["cid" => $_item['cid']])?>">
+                        <a class="m-l" href="<?=UrlService::bulidWebUrl("/product/set",["pid" => $_item['pid']])?>">
                             <i class="fa fa-edit fa-lg"></i>
                         </a>
-                        <a class="m-l remove" href="javascript:void(0);" data="<?=$_item['cid'];?>">
+                        <a class="m-l remove" href="javascript:void(0);" data="<?=$_item['pid'];?>">
                             <i class="fa fa-trash fa-lg"></i>
                         </a>
                     </td>
@@ -75,11 +75,11 @@ StaticService::includeAppJsStatic("/js/web/customer/index.js",app\assets\WebAsse
                 <?php else:?>
                     <?php if($mix_kw):?>
                      <li >
-                        <a href="<?= UrlService::bulidWebUrl("/customer/index",['p' => $_page,'mix_kw'=>$mix_kw]);?>"><?=$_page;?></a>
+                        <a href="<?= UrlService::bulidWebUrl("/product/index",['p' => $_page,'mix_kw'=>$mix_kw]);?>"><?=$_page;?></a>
                     </li>
                     <?php else:?>
                         <li >
-                        <a href="<?= UrlService::bulidWebUrl("/customer/index",['p' => $_page]);?>"><?=$_page;?></a>
+                        <a href="<?= UrlService::bulidWebUrl("/product/index",['p' => $_page]);?>"><?=$_page;?></a>
                     </li> 
                     <?php endif;?>
                 <?php endif;?>  

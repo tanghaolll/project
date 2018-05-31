@@ -4,12 +4,12 @@ namespace app\modules\web\controllers;
 
 use yii\web\Controller;
 use  app\modules\web\controllers\common\BaseController;
-use app\models\Customer;
+use app\models\Product;
 
 /**
  * Default controller for the `web` module
  */
-class CustomerController extends BaseController
+class ProductController extends BaseController
 {
     
     public function __construct($id,$module,array $config = []){
@@ -20,15 +20,15 @@ class CustomerController extends BaseController
    public function actionIndex(){
    		$p = intval($this->get("p",1));
    		$page_size = 50;
-   		$count = Customer::find()->count();
+   		$count = Product::find()->count();
    		$page_count = ceil($count / $page_size);
    		$mix_kw = trim($this->get("mix_kw",""));
-   		$query = Customer::find();
+   		$query = Product::find();
    		  if($mix_kw){
             
-            $query->Where(['LIKE','cust_name','%'.$mix_kw.'%',false]);
+            $query->Where(['LIKE','product','%'.$mix_kw.'%',false]);
         }
-   		$list =$query->offset(($p-1) * $page_size)->limit($page_size)->orderBy(['cid'=>SORT_DESC])->all();
+   		$list =$query->offset(($p-1) * $page_size)->limit($page_size)->orderBy(['pid'=>SORT_DESC])->all();
 
    	 	 return $this->render('index',[
             'list'=>$list,
@@ -45,30 +45,22 @@ class CustomerController extends BaseController
    public function actionSet(){
 
    	if(\Yii::$app->request->isGet){
-   		$cid = intval($this->get("cid",""));
+   		$pid = intval($this->get("pid",""));
    		$info = [];
-   		if($cid){
-                $info = Customer::find()->where(['cid'=>$cid])->one();
+   		if($pid){
+                $info = Product::find()->where(['pid'=>$pid])->one();
             }
    		return $this->render('set',['info' =>$info]);
    	}
-   	$cust_name = trim($this->post("cust_name",""));
+   	$product = trim($this->post("product",""));
    	$date_now = date("Y-m-d H:i:s");
-   	 if(mb_strlen($cust_name,"utf-8") < 1){
-            return $this->renderJson([],"客户名不能为空",-1);
+   	 if(mb_strlen($product,"utf-8") < 1){
+            return $this->renderJson([],"产品名称不能为空",-1);
         }
-      $cid = intval($this->get("cid",""));
-     $info = Customer::find()->where(['cid'=>$cid])->one();
-
-        if($info){
-            $model_customer = $info;
-        }else{
-             $model_customer = new Customer();
-             $model_customer->created_time = $date_now;
-
-        }
-	       $model_customer->cust_name = $cust_name;
-	       $model_customer->save(0);
+	    $model_product = new Product();
+	    $model_product->created_time = $date_now;
+	    $model_product->product = $product;
+	    $model_product->save(0);
         return $this->renderJson([],"操作成功");
    
    }
@@ -78,22 +70,22 @@ class CustomerController extends BaseController
    		if(!\Yii::$app->request->isPost){
             return $this->renderJson([],"系统繁忙请稍后再试",-1);
         }
-        $cid = intval($this->post("cid",0));
+        $pid = intval($this->post("pid",0));
         $act = trim($this->post("act",""));
-        if(!$cid){
+        if(!$pid){
             return $this->renderJson([],"请选择要操作的账号",-1);
         }
 
         if(!in_array($act, ["remove"])){
             return $this->renderJson([],"操作有误请重试",-1);
         }
-        $customer_info  = Customer::find()->where(['cid' => $cid])->one();
-        if(!$customer_info){
+        $product_info  = Product::find()->where(['pid' => $pid])->one();
+        if(!$product_info){
             return $this->renderJson([],"操作有误请重试",-1);
         }
         switch ($act) {
             case 'remove':
-				$customer_info->delete();
+				$product_info->delete();
                 break;
         }
         return $this->renderJson([],"操作成功");

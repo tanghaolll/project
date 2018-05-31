@@ -1,0 +1,93 @@
+<?php
+use app\common\services\UrlService;
+use \app\common\services\StaticService;
+//StaticService::includeAppJsStatic("/js/web/product/index.js",app\assets\WebAsset::className());
+?>
+<div class="row  border-bottom">
+	<div class="col-lg-12">
+		<div class="tab_title">
+			<ul class="nav nav-pills">
+				<li  class="current"  >
+					<a href="/web/account/index">采购单列表</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="row m-t  wrap_account_set">
+	<div class="col-lg-12">
+		<h2 class="text-center">采购单</h2>
+		<div class="form-horizontal m-t m-b">
+			<div class="form-group">
+				<label class="col-lg-2 control-label">产品类型:</label>
+				<div class="col-lg-10">
+					<select class="form-control" style="width: 300px;">
+					  <option value="volvo">Volvo</option>
+					  <option value="saab">Saab</option>
+					  <option value="opel">Opel</option>
+					  <option value="audi">Audi</option>
+					</select>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">客户:</label>
+				<div class="col-lg-10">
+					<select class="form-control" style="width: 300px;">
+					  <option value="volvo">Volvo</option>
+					  <option value="saab">Saab</option>
+					  <option value="opel">Opel</option>
+					  <option value="audi">Audi</option>
+					</select>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">单价:</label>
+				<div class="col-lg-10">
+					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">数量:</label>
+				<div class="col-lg-10">
+					<input type="text" name="email" class="form-control" placeholder="请输入数量~~" value="apanly@163.com">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">付款凭证:</label>
+				<div class="col-lg-10">
+					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">时间:</label>
+				<div class="col-lg-10">
+					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4">
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">应付:</label>
+				<div class="col-lg-10">
+					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4" disabled>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<div class="col-lg-4 col-lg-offset-2">
+                    <input type="hidden" name="id" value="13">
+					<button class="btn btn-w-m btn-outline btn-primary save">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
