@@ -20,7 +20,7 @@ StaticService::includeAppJsStatic("/js/web/purchase/index.js",app\assets\WebAsse
 			<div class="row m-t p-w-m">
 				<div class="form-group">
 					<div class="input-group">
-						<input type="text" name="mix_kw" placeholder="请输入姓名或者手机号码" class="form-control" value="">
+						<input type="text" name="mix_kw" placeholder="请输入单号" class="form-control" value="">
                         <input type="hidden" name="p" value="1">
 						<span class="input-group-btn">
                             <button type="button" class="btn btn-primary search">
@@ -67,14 +67,11 @@ StaticService::includeAppJsStatic("/js/web/purchase/index.js",app\assets\WebAsse
                     <td><?=$_item['invoice'];?></td>
                     <td><?=$_item['created_time'];?></td>
                     <td>
-                        <a  href="/web/account/info?id=13">
-                            <i class="fa fa-eye fa-lg"></i>
-                        </a>
-                        <a class="m-l" href="/web/account/set?id=13">
+                        <a class="m-l" href="<?= UrlService::bulidWebUrl("/purchase/set",['oid'=>$_item['oid']]);?>">
                             <i class="fa fa-edit fa-lg"></i>
                         </a>
 
-                        <a class="m-l remove" href="javascript:void(0);" data="13">
+                        <a class="m-l remove" href="javascript:void(0);" data="<?=$_item['oid'];?>">
                             <i class="fa fa-trash fa-lg"></i>
                         </a>
                      </td>

@@ -5,6 +5,9 @@ namespace app\modules\web\controllers;
 use yii\web\Controller;
 use  app\modules\web\controllers\common\BaseController;
 use app\models\Purchase;
+use app\models\Customer;
+use app\models\Product;
+
 /**
  * Default controller for the `web` module
  */
@@ -47,7 +50,12 @@ class PurchaseController extends BaseController
      public function actionSet()
     {
        
-        return $this->render('set');
+       if(\Yii::$app->request->isGet){
+            $cust = Customer::find()->all();
+            $product = Product::find()->all();
+         return $this->render('set',['cust'=>$cust,'product'=>$product]);
+       }
+       
 
        }
 }

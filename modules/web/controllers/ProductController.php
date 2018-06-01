@@ -54,13 +54,28 @@ class ProductController extends BaseController
    	}
    	$product = trim($this->post("product",""));
    	$date_now = date("Y-m-d H:i:s");
+     $pid = intval($this->post("pid",""));
    	 if(mb_strlen($product,"utf-8") < 1){
             return $this->renderJson([],"产品名称不能为空",-1);
         }
-	    $model_product = new Product();
-	    $model_product->created_time = $date_now;
-	    $model_product->product = $product;
-	    $model_product->save(0);
+     $has_in = Product::find()->where(['product' => $product])->andWhere(['!=','pid',$pid])->count();
+
+      if($has_in){
+            return $this->renderJson([],"产品名称已存在",-1);
+        }
+     
+     $info = Product::find()->where(['pid'=>$pid])->one();
+
+        if($info){
+            $model_product = $info;
+            $model_product->updated_time = $date_now;
+        }else{
+             $model_product = new Product();
+             $model_product->created_time = $date_now;
+
+        }
+  	    $model_product->product = $product;
+  	    $model_product->save(0);
         return $this->renderJson([],"操作成功");
    
    }

@@ -1,7 +1,10 @@
 <?php
 use app\common\services\UrlService;
 use \app\common\services\StaticService;
-//StaticService::includeAppJsStatic("/js/web/product/index.js",app\assets\WebAsset::className());
+StaticService::includeAppCssStatic("/plugins/select2/select2.min.css",app\assets\WebAsset::className());
+StaticService::includeAppJsStatic("/plugins/select2/select2.min.js",app\assets\WebAsset::className());
+StaticService::includeAppJsStatic("/js/web/purchase/set.js",app\assets\WebAsset::className());
+
 ?>
 <div class="row  border-bottom">
 	<div class="col-lg-12">
@@ -21,23 +24,22 @@ use \app\common\services\StaticService;
 			<div class="form-group">
 				<label class="col-lg-2 control-label">产品类型:</label>
 				<div class="col-lg-10">
-					<select class="form-control" style="width: 300px;">
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="opel">Opel</option>
-					  <option value="audi">Audi</option>
-					</select>
+				
+				<select id="product" class="form-control" style="width: 300px;">
+					<?php foreach($product as $_item):?>
+					  <option value="<?=$_item['product']?>"><?=$_item['product']?></option>
+					 <?php endforeach;?>
+				</select>
 				</div>
 			</div>
 			<div class="hr-line-dashed"></div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">客户:</label>
 				<div class="col-lg-10">
-					<select class="form-control" style="width: 300px;">
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="opel">Opel</option>
-					  <option value="audi">Audi</option>
+					<select id="customer" class="form-control" style="width: 300px;">
+					  <?php foreach($cust as $_list):?>
+					  <option value="<?=$_list['cust_name']?>"><?=$_list['cust_name']?></option>
+					 <?php endforeach;?>
 					</select>
 				</div>
 			</div>
@@ -45,35 +47,35 @@ use \app\common\services\StaticService;
 			<div class="form-group">
 				<label class="col-lg-2 control-label">单价:</label>
 				<div class="col-lg-10">
-					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4">
+					<input type="text" name="price" class="form-control" autocomplete="off" placeholder="请输入单价~~" value="test4">
 				</div>
 			</div>
 			<div class="hr-line-dashed"></div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">数量:</label>
 				<div class="col-lg-10">
-					<input type="text" name="email" class="form-control" placeholder="请输入数量~~" value="apanly@163.com">
+					<input type="text" name="number" class="form-control" placeholder="请输入数量~~" value="apanly@163.com">
 				</div>
 			</div>
 			<div class="hr-line-dashed"></div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">付款凭证:</label>
 				<div class="col-lg-10">
-					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4">
+					<input type="text" name="invoice" class="form-control" autocomplete="off" placeholder="请输入支付凭证~~" value="test4">
 				</div>
 			</div>
 			<div class="hr-line-dashed"></div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">时间:</label>
 				<div class="col-lg-10">
-					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4">
+					<input type="text" id="created_time" name="created_time" class="form-control" autocomplete="off" placeholder="请输入时间~~" value="">
 				</div>
 			</div>
 			<div class="hr-line-dashed"></div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">应付:</label>
 				<div class="col-lg-10">
-					<input type="text" name="login_name" class="form-control" autocomplete="off" placeholder="请输入登录名~~" value="test4" disabled>
+					<input type="text" name="total_price" class="form-control" autocomplete="off" placeholder="总价格为~~" value="test4" disabled>
 				</div>
 			</div>
 			<div class="hr-line-dashed"></div>

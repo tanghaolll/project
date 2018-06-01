@@ -27,7 +27,7 @@ StaticService::includeAppJsStatic("/js/web/product/set.js",app\assets\WebAsset::
 			<div class="hr-line-dashed"></div>
 			<div class="form-group">
 				<div class="col-lg-4 col-lg-offset-2">
-                    <input type="hidden" name="id" value="<?=$info?$info['pid']:0;?>">
+                    <input type="hidden" name="pid" value="<?=$info?$info['pid']:0;?>">
 					<button class="btn btn-w-m btn-outline btn-primary save">保存</button>
 				</div>
 			</div>

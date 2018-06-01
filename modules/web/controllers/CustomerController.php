@@ -52,16 +52,23 @@ class CustomerController extends BaseController
             }
    		return $this->render('set',['info' =>$info]);
    	}
+    $cid = intval($this->post("cid",""));
    	$cust_name = trim($this->post("cust_name",""));
    	$date_now = date("Y-m-d H:i:s");
    	 if(mb_strlen($cust_name,"utf-8") < 1){
             return $this->renderJson([],"客户名不能为空",-1);
         }
-      $cid = intval($this->get("cid",""));
-     $info = Customer::find()->where(['cid'=>$cid])->one();
+     $has_in = Customer::find()->where(['cust_name' => $cust_name])->andWhere(['!=','cid',$cid])->count();
 
+      if($has_in){
+            return $this->renderJson([],"客户名已存在",-1);
+        }
+
+      $cid = intval($this->post("cid",""));
+     $info = Customer::find()->where(['cid'=>$cid])->one();
         if($info){
             $model_customer = $info;
+
         }else{
              $model_customer = new Customer();
              $model_customer->created_time = $date_now;

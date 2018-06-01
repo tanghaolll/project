@@ -12,10 +12,12 @@ var product_set_ops = {
 				return;
 			}
 			var product =  $("input[name=product]").val();
+			var pid = $("input[name=pid]").val();
 			btn_target.addClass("disabled");
 
 			var data = {
-				product:product
+				product:product,
+				pid:pid
 			};
 			$.ajax({
 				url:common_ops.buildWebUrl("/product/set"),
